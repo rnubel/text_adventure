@@ -31,6 +31,17 @@ describe Command::Look do
     capture_stdout {
       c.execute(w)
     }.should =~ /Blah/
+  end
+
+  it "should handle the case when the target is not found" do
+c = Command::Look.new("Bob")
+
+    w = stub()
+    w.expects(:find_actor).with("Bob").returns(nil)
+
+    lambda {
+      c.execute(w)
+    }.should_not raise_error
 
   end
 end

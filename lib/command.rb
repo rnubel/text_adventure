@@ -18,7 +18,8 @@ class Command::Look
   include Command::Base
 
   def execute(world)
-    say(world.find_actor(@target).description)
+    actor = world.find_actor(@target)
+    say(actor ? actor.description : "You don't know anyone by that name.")
   end
 end
 
