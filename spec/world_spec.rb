@@ -15,4 +15,12 @@ describe World do
     w.find_actor("Bill").should == actor
   end
 
+  it "should have a current room" do
+    w = World.new
+    r = mock()
+
+    w.current_room = r
+
+    w.current_room.should == r
+  end
 end

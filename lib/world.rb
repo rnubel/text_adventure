@@ -1,4 +1,5 @@
 class World
+  attr_accessor :current_room
   def initialize
     @actors = []
   end
