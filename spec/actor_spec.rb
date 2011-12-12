@@ -12,4 +12,10 @@ describe Actor do
 
     a.should respond_to(:description)
   end
+
+  it "should instantiate a Reactive::Self when created" do
+    a = Actor.new("Bill")
+
+    a.reactive_self.should be_a(Reactive::Self)
+  end
 end

@@ -1,16 +1,30 @@
 GIT
   remote: git://github.com/rnubel/reactive.git
-  revision: d99748d14657715ae63440a13057abc054f48ce5
+  revision: 4ac85f22ec57cc04da7dfffc7d2d05abb236ac86
   specs:
     reactiveai (0.0.1)
 
 GEM
   specs:
+    diff-lcs (1.1.3)
     highline (1.6.8)
+    metaclass (0.0.1)
+    mocha (0.10.0)
+      metaclass (~> 0.0.1)
+    rspec (2.7.0)
+      rspec-core (~> 2.7.0)
+      rspec-expectations (~> 2.7.0)
+      rspec-mocks (~> 2.7.0)
+    rspec-core (2.7.1)
+    rspec-expectations (2.7.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.7.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   highline
+  mocha
   reactiveai!
+  rspec
