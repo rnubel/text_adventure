@@ -33,8 +33,18 @@ describe Command::Look do
     }.should =~ /Blah/
   end
 
+  it "should look at the room if target is not given" do
+    c = Command::Look.new
+
+    w = mock(:current_room => mock(:description => "It's a room."))
+    
+    capture_stdout {
+      c.execute(w)
+    }.should =~ /It's a room./
+  end
+
   it "should handle the case when the target is not found" do
-c = Command::Look.new("Bob")
+    c = Command::Look.new("Bob")
 
     w = stub()
     w.expects(:find_actor).with("Bob").returns(nil)

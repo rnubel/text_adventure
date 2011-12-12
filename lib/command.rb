@@ -18,8 +18,13 @@ class Command::Look
   include Command::Base
 
   def execute(world)
-    actor = world.find_actor(@target)
-    say(actor ? actor.description : "You don't know anyone by that name.")
+    if @target then # Look at something
+      actor = world.find_actor(@target)
+      say(actor ? actor.description : "You don't know anyone by that name.")
+    else
+      room = world.current_room
+      say(room ? room.description : "You don't appear to be anywhere particular.")
+    end
   end
 end
 
