@@ -11,7 +11,7 @@ world = World.new
 
 # Loop on user's commands.
 while true do
-  command_str = ask("")
+  command_str = ask("What do you do?")
   command = CommandParser.new(command_str).get_command
   command.execute(world)
 
