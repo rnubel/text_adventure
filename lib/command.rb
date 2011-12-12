@@ -8,6 +8,9 @@ module Command
     def ==(other)
       self.target == other.target
     end
+
+    def execute(world)
+    end
   end
 end
 
@@ -21,4 +24,16 @@ end
 
 class Command::Kill
   include Command::Base
+end
+
+class Command::Unknown
+  def execute(world)
+    say "You don't know how to do that."
+  end
+end
+
+class Command::Exit
+  def execute(world)
+    exit(1) if agree("Are you sure? [y/n]")
+  end
 end

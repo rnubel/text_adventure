@@ -11,6 +11,10 @@ class CommandParser
       return Command::Look.new(@args[1])
     when 'kill'
       return Command::Kill.new(@args[1])
+    when 'exit'
+      return Command::Exit.new
+    else
+      Command::Unknown.new
     end
   end
 
