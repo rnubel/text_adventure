@@ -4,4 +4,8 @@ class Actor
     @name = name
   end
 
+  def description
+    "It's #{@name}."
+  end
+
 end

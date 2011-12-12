@@ -7,5 +7,9 @@ describe Actor do
     a.name.should == "Bill"
   end
 
+  it "should have a current description" do
+    a = Actor.new("Bill")
 
+    a.should respond_to(:description)
+  end
 end
