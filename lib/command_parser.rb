@@ -3,7 +3,7 @@ class CommandParser
     @args = string.split(" ")
   end
 
-  def get_action
+  def get_command
     action_name = @args[0]
 
     case action_name

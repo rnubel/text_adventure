@@ -13,6 +13,10 @@ end
 
 class Command::Look
   include Command::Base
+
+  def execute(world)
+    say(world.find_actor(@target).description)
+  end
 end
 
 class Command::Kill
