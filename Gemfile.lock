@@ -1,0 +1,16 @@
+GIT
+  remote: git://github.com/rnubel/reactive.git
+  revision: d99748d14657715ae63440a13057abc054f48ce5
+  specs:
+    reactiveai (0.0.1)
+
+GEM
+  specs:
+    highline (1.6.8)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  highline
+  reactiveai!
