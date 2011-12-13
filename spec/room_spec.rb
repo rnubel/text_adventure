@@ -10,4 +10,12 @@ describe Room do
 
     r.description.should == "Test"
   end
+
+  it "should have a list of occupants" do
+    a = mock() #actor
+    r = Room.new(:description => "Test",
+                 :occupants => [a])
+  
+    r.occupants.should == [a]
+  end
 end
