@@ -18,4 +18,12 @@ describe Room do
   
     r.occupants.should == [a]
   end
+
+  it "should include occupants in its description" do
+    a = mock(:name => "Bill") #actor
+    r = Room.new(:description => "Test",
+                 :occupants => [a])
+
+    r.description.should == "Test\n\nBill is standing here." 
+  end
 end
