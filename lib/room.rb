@@ -18,4 +18,8 @@ class Room
 
     desc
   end
+
+  def find_actor(name)
+    occupants.find { |o| o.name == name }
+  end
 end

@@ -19,6 +19,15 @@ describe Room do
     r.occupants.should == [a]
   end
 
+  it "should find an actor inside of it" do
+    a1 = mock(:name => "Bill") #actor
+    a2 = mock(:name => "Bob") #actor
+    r = Room.new(:description => "Test",
+                 :occupants => [a1, a2])
+  
+    r.find_actor("Bob").should == a2
+  end
+
   it "should include occupants in its description" do
     a = mock(:name => "Bill") #actor
     r = Room.new(:description => "Test",

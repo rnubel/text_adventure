@@ -13,4 +13,8 @@ class World
       actor.name == name
     end
   end
+
+  def find_actor_in_room(name)
+    current_room.find_actor(name)
+  end
 end
