@@ -1,6 +1,7 @@
 # Main game loop.
 
 require 'highline/import'
+require 'reactiveai'
 
 Dir["lib/*.rb"].each do |file|
   require file
@@ -8,7 +9,8 @@ end
 
 # Create the world.
 world = World.new
-room = Room.new :description => "You stand in the middle of nowhere."
+room = Room.new :description => "You stand in the middle of nowhere.", 
+                :occupants => [ Actor.new("Bob") ]
 world.current_room = room
 
 # Loop on user's commands.
