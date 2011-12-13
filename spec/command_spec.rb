@@ -19,12 +19,12 @@ describe Command::Look do
     c.target.should == "blar"
   end
 
-  it "should apply itself to the world and produce output" do
+  it "should look at an actor in the current room" do
     c = Command::Look.new("Bob")
 
     w = stub()
     actor_bob = stub(:name => "Bob")
-    w.expects(:find_actor).with("Bob").returns(actor_bob)
+    w.expects(:find_actor_in_room).with("Bob").returns(actor_bob)
     actor_bob.expects(:description).returns("Blah")
 
 
@@ -47,7 +47,7 @@ describe Command::Look do
     c = Command::Look.new("Bob")
 
     w = stub()
-    w.expects(:find_actor).with("Bob").returns(nil)
+    w.expects(:find_actor_in_room).with("Bob").returns(nil)
 
     lambda {
       c.execute(w)

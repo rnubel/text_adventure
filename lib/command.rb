@@ -11,6 +11,10 @@ module Command
 
     def execute(world)
     end
+
+    def output(str)
+      say(HighLine::color(str, :yellow))
+    end
   end
 end
 
@@ -19,11 +23,11 @@ class Command::Look
 
   def execute(world)
     if @target then # Look at something
-      actor = world.find_actor(@target)
-      say(actor ? actor.description : "You don't know anyone by that name.")
+      actor = world.find_actor_in_room(@target)
+      output(actor ? actor.description : "You don't see anyone like that.")
     else
       room = world.current_room
-      say(room ? room.description : "You don't appear to be anywhere particular.")
+      output(room ? room.description : "You don't appear to be anywhere particular.")
     end
   end
 end
@@ -34,12 +38,12 @@ end
 
 class Command::Unknown
   def execute(world)
-    say "You don't know how to do that."
+    output "You don't know how to do that."
   end
 end
 
 class Command::Exit
   def execute(world)
-    exit(1) if agree("Are you sure? [y/n]")
+    exit(1) if agree(HighLine::color("Are you sure? [y/n]", HighLine::BOLD + HighLine::GREEN))
   end
 end
