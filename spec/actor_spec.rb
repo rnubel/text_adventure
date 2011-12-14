@@ -18,4 +18,13 @@ describe Actor do
 
     a.reactive_self.should be_a(Reactive::Self)
   end
+
+  it "should be in a room" do
+    a = Actor.new("Bill")
+    r = mock()
+
+    a.current_room = r
+
+    a.current_room.should == r
+  end
 end

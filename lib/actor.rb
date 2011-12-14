@@ -1,5 +1,5 @@
 class Actor
-  attr_accessor :name, :reactive_self
+  attr_accessor :name, :reactive_self, :current_room
   def initialize(name)
     @name = name
 
