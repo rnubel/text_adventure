@@ -37,12 +37,16 @@ class Command::Kill
 end
 
 class Command::Unknown
+  include Command::Base
+
   def execute(world)
     output "You don't know how to do that."
   end
 end
 
 class Command::Exit
+  include Command::Base
+
   def execute(world)
     exit(1) if agree(HighLine::color("Are you sure? [y/n]", HighLine::BOLD + HighLine::GREEN))
   end
