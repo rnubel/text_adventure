@@ -54,4 +54,12 @@ describe Room do
 
     r.occupants.should =~ []
   end
+
+  it "should have exits as a hash of direction => room" do
+    r = Room.new
+    r2 = Room.new
+    r.exits = {"north" => r2}
+
+    r.exits["north"].should == r2
+  end
 end

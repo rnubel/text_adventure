@@ -1,5 +1,5 @@
 class Room
-  attr_accessor :occupants
+  attr_accessor :occupants, :exits
   def initialize(args = {})
     @base_description =   args[:description]  || ""
 
