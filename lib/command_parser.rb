@@ -9,6 +9,8 @@ class CommandParser
     case action_name
     when 'look'
       return Command::Look.new(@args[1])
+    when 'move'
+      return Command::Move.new(@args[1])
     when 'kill'
       return Command::Kill.new(@args[1])
     when 'exit'

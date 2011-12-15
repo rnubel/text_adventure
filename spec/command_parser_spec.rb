@@ -6,6 +6,11 @@ describe CommandParser do
       Command::Look.new("bob")
   end
 
+  it "should parse a move action" do
+    CommandParser.new("move north").get_command.should == 
+      Command::Look.new("north")
+  end
+
   it "should parse a kill action" do
     CommandParser.new("kill bill").get_command.should == 
       Command::Kill.new("bill")

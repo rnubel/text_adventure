@@ -51,9 +51,25 @@ describe Command::Look do
     w = stub(:player => stub(:current_room => r))
     w.expects(:find_actor_in_room).with("Bob", anything).returns(nil)
 
-    lambda {
+    capture_stdout {
       c.execute(w)
-    }.should_not raise_error
+    }.should =~ /don't see anyone/
 
+  end
+end
+
+describe Command::Move do
+  it "should instantiate with a direction" do
+    c = Command::Move.new("north")
+
+    c.target.should == "north"
+  end
+
+  it "should try to move in the given direction" do
+    c = Command::Move.new("north")
+    p = mock(:move_in_direction)
+    w = mock(:player => p)
+    
+    c.execute(w)
   end
 end

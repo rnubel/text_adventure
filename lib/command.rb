@@ -51,3 +51,11 @@ class Command::Exit
     exit(1) if agree(HighLine::color("Are you sure? [y/n]", HighLine::BOLD + HighLine::GREEN))
   end
 end
+
+class Command::Move
+  include Command::Base
+
+  def execute(world)
+    world.player.move_in_direction(@target)
+  end
+end
