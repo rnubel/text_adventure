@@ -35,4 +35,23 @@ describe Room do
 
     r.description.should == "Test\n\nBill is standing here." 
   end
+
+  it "should add an occupant" do
+    a = stub()
+    b = stub()
+    r = Room.new(:occupants => [a])
+
+    r.add_actor(b)
+
+    r.occupants.should =~ [a, b]
+  end
+
+  it "should remove an occupant" do
+    a = stub()
+    r = Room.new(:occupants => [a])
+
+    r.remove_actor(a)
+
+    r.occupants.should =~ []
+  end
 end

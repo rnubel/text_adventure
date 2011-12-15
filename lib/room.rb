@@ -22,4 +22,12 @@ class Room
   def find_actor(name)
     occupants.find { |o| o.name == name }
   end
+
+  def add_actor(actor)
+    occupants.push(actor)
+  end
+
+  def remove_actor(actor)
+    occupants.delete(actor)
+  end
 end
