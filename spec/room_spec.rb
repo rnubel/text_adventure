@@ -36,6 +36,15 @@ describe Room do
     r.description.should == "Test\n\nBill is standing here." 
   end
 
+  it "should include exits in its description" do
+    a = mock(:name => "Bill") #actor
+    r = Room.new(:description => "Test",
+                 :occupants => [a])
+    r.exits["north"] = Room.new
+
+    r.description.should == "Test\n\nBill is standing here.\n\nThere is an exit to the north." 
+  end
+
   it "should add an occupant" do
     a = stub()
     b = stub()
@@ -53,6 +62,11 @@ describe Room do
     r.remove_actor(a)
 
     r.occupants.should =~ []
+  end
+
+  it "should instantiate with an empty exits hash" do
+    r = Room.new
+    r.exits.should == {}
   end
 
   it "should have exits as a hash of direction => room" do

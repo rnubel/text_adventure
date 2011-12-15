@@ -4,6 +4,7 @@ class Room
     @base_description =   args[:description]  || ""
 
     self.occupants =      args[:occupants]    || []
+    self.exits     =      {}
   end
 
   def description
@@ -13,6 +14,13 @@ class Room
       desc += "\n"
       occupants.each do |o|
         desc += "\n#{o.name} is standing here."
+      end
+    end
+
+    if not exits.empty?
+      desc += "\n"
+      exits.each do |dir, room|
+        desc += "\nThere is an exit to the #{dir}."
       end
     end
 
