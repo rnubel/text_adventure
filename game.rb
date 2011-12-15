@@ -11,6 +11,9 @@ end
 world = World.new
 room = Room.new :description => "You stand in the middle of nowhere.", 
                 :occupants => [ Actor.new("Bob") ]
+room2 = Room.new :description => "You are not in the middle of nowhere. Yay.", 
+                :occupants => [ Actor.new("Bill") ]
+room.exits["north"] = room2
 world.player = Actor.new("Player")
 world.player.current_room = room
 
