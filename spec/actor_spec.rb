@@ -27,4 +27,15 @@ describe Actor do
 
     a.current_room.should == r
   end
+
+  it "should move rooms" do
+    a = Actor.new("Bill")
+    r1 = mock(:remove_actor => nil)
+    r2 = mock(:add_actor => nil)
+    a.current_room = r1
+
+    a.move_to(r2)
+
+    a.current_room.should == r2
+  end
 end

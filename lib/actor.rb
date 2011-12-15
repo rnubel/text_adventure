@@ -10,4 +10,10 @@ class Actor
     "It's #{@name}."
   end
 
+  def move_to(room)
+    current_room.remove_actor(self)
+    room.add_actor(self)
+
+    @current_room = room
+  end
 end
