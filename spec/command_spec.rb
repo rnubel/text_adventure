@@ -22,9 +22,10 @@ describe Command::Look do
   it "should look at an actor in the current room" do
     c = Command::Look.new("Bob")
 
-    w = stub()
+    r = mock()
+    w = stub(:player => stub(:current_room => r))
     actor_bob = stub(:name => "Bob")
-    w.expects(:find_actor_in_room).with("Bob").returns(actor_bob)
+    w.expects(:find_actor_in_room).with("Bob", r).returns(actor_bob)
     actor_bob.expects(:description).returns("Blah")
 
 
@@ -36,7 +37,7 @@ describe Command::Look do
   it "should look at the room if target is not given" do
     c = Command::Look.new
 
-    w = mock(:current_room => mock(:description => "It's a room."))
+    w = mock(:player => mock(:current_room => mock(:description => "It's a room.")))
     
     capture_stdout {
       c.execute(w)
@@ -46,8 +47,9 @@ describe Command::Look do
   it "should handle the case when the target is not found" do
     c = Command::Look.new("Bob")
 
-    w = stub()
-    w.expects(:find_actor_in_room).with("Bob").returns(nil)
+    r = mock()
+    w = stub(:player => stub(:current_room => r))
+    w.expects(:find_actor_in_room).with("Bob", anything).returns(nil)
 
     lambda {
       c.execute(w)

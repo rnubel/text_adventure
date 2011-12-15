@@ -15,23 +15,22 @@ describe World do
     w.find_actor("Bill").should == actor
   end
 
-  it "should have a current room" do
+  it "should have a current player" do
     w = World.new
-    r = mock()
+    p = mock()
 
-    w.current_room = r
+    w.player = p
 
-    w.current_room.should == r
+    w.player.should == p
   end
 
-  it "should find an actor in current room by name" do
+  it "should find an actor in given room by name" do
     w = World.new
     a = mock()
     r = mock()
     r.expects(:find_actor).with("Bob").returns(a)
 
-    w.current_room = r
-
-    w.find_actor_in_room("Bob").should == a
+    w.find_actor_in_room("Bob", r).should == a
   end
+
 end

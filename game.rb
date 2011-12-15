@@ -11,7 +11,8 @@ end
 world = World.new
 room = Room.new :description => "You stand in the middle of nowhere.", 
                 :occupants => [ Actor.new("Bob") ]
-world.current_room = room
+world.current_player = Actor.new("Player")
+world.current_player.current_room = room
 
 # Loop on user's commands.
 while true do

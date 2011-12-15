@@ -23,10 +23,10 @@ class Command::Look
 
   def execute(world)
     if @target then # Look at something
-      actor = world.find_actor_in_room(@target)
+      actor = world.find_actor_in_room(@target, world.player.current_room)
       output(actor ? actor.description : "You don't see anyone like that.")
     else
-      room = world.current_room
+      room = world.player.current_room
       output(room ? room.description : "You don't appear to be anywhere particular.")
     end
   end

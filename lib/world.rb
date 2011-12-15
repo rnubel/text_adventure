@@ -1,5 +1,5 @@
 class World
-  attr_accessor :current_room
+  attr_accessor :player
   def initialize
     @actors = []
   end
@@ -14,7 +14,7 @@ class World
     end
   end
 
-  def find_actor_in_room(name)
-    current_room.find_actor(name)
+  def find_actor_in_room(name, room)
+    room.find_actor(name)
   end
 end
