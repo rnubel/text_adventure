@@ -38,4 +38,15 @@ describe Actor do
 
     a.current_room.should == r2
   end
+
+  it "should move in a direction" do
+    a = Actor.new("Bill")
+    r2 = mock()
+    r1 = stub(:exits => {"north" => r2})
+    a.current_room = r1
+
+    a.expects(:move_to).with(r2)
+
+    a.move_in_direction("north")
+  end
 end

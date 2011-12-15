@@ -16,4 +16,10 @@ class Actor
 
     @current_room = room
   end
+
+  def move_in_direction(direction)
+    if current_room.exits.has_key? direction
+      move_to current_room.exits[direction]
+    end
+  end
 end
