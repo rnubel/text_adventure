@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rnubel/reactive.git
-  revision: 4ac85f22ec57cc04da7dfffc7d2d05abb236ac86
+  revision: e5922ae2e11243d41ce16497d5e9968e0460654b
   specs:
     reactiveai (0.0.1)
 
