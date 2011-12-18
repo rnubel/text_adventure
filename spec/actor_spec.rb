@@ -49,4 +49,29 @@ describe Actor do
 
     a.move_in_direction("north")
   end
+
+
+  describe "helper methods" do
+    it "should look up the Reactive::Entity associated with any given Actor" do
+      a = Actor.new("Alice")
+      b = Actor.new("Bob")
+      c = Actor.new("Charles")
+
+      e = a.send('get_entity_for', b)
+      e2 = a.send('get_entity_for', c)
+
+      e.should_not == e2
+    end
+
+    it "should save and retrieve reactive entities per actor" do
+      a = Actor.new("Alice")
+      b = Actor.new("Bob")
+
+      e = a.send('get_entity_for', b)
+      e2 = a.send('get_entity_for', b)
+
+      e.should == e2
+
+    end
+  end
 end

@@ -4,6 +4,7 @@ class Actor
     @name = name
 
     @reactive_self = Reactive::Self.new({})
+    @actor_entities = {}
   end
 
   def description
@@ -21,5 +22,10 @@ class Actor
     if current_room.exits.has_key? direction
       move_to current_room.exits[direction]
     end
+  end
+
+  private
+  def get_entity_for(actor)
+    @actor_entities[actor] ||= Reactive::Entity.new(:name => actor.name)
   end
 end
