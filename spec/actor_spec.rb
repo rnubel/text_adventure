@@ -71,7 +71,6 @@ describe Actor do
       e2 = a.send('get_entity_for', b)
 
       e.should == e2
-
     end
   end
 end
