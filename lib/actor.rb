@@ -25,11 +25,26 @@ class Actor
   end
 
   def witness(event)
-
+    # Convert the game event to a reactive action.
+    action = get_action_for(event)
+    reactive_self.react_to!(action)
   end
 
   private
   def get_entity_for(actor)
+    return nil if actor.nil?
     @actor_entities[actor] ||= Reactive::Entity.new(:name => actor.name)
+  end
+
+  def get_action_for(event)
+    case
+    when event.class == Event::Killing
+      src = get_entity_for(event.originator)
+      dst = get_entity_for(event.target)
+      Reactive::Actions::Murder.new(:source => src, :destination => dst)
+    else
+      nil
+    end
+
   end
 end

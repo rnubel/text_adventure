@@ -50,12 +50,20 @@ describe Actor do
     a.move_in_direction("north")
   end
 
-  it "should witness events" do
-    a = Actor.new("Bill")
+  describe "witnessing events" do
+    before :each do
+      @a = Actor.new("Bill")
+    end
 
-    event = mock()
+    it "should witness an event, convert it to an action, and react to that action" do
+      event = mock()
+      action = mock()
 
-    a.witness(event)
+      @a.expects(:get_action_for).with(event).returns(action)
+      @a.reactive_self.expects("react_to!").with(action)
+
+      @a.witness(event) 
+    end
   end
 
   describe "helper methods" do
@@ -78,6 +86,21 @@ describe Actor do
       e2 = a.send('get_entity_for', b)
 
       e.should == e2
+    end
+
+    it "should return nil as an entity for a nil actor" do
+      a = Actor.new("Alice")
+
+      a.send('get_entity_for', nil).should == nil
+    end
+
+    it "should convert Event::Killing to Reactive::Action::Murder" do
+      a = Actor.new("Bob")
+      event = Event::Killing.new
+      action = a.send('get_action_for', event)
+
+      action.should_not be_nil
+      action.should be_a Reactive::Actions::Murder
     end
   end
 end
