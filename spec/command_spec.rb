@@ -68,8 +68,23 @@ describe Command::Move do
   it "should try to move in the given direction" do
     c = Command::Move.new("north")
     p = mock(:move_in_direction)
-    w = mock(:player => p)
-    
-    c.execute(w)
+    p.stubs(:current_room).returns mock(:description => "New room")
+    w = stub(:player => p)
+
+    capture_stdout {
+      c.execute(w)
+    }
   end
+
+  it "should display the new room's description" do
+    c = Command::Move.new("north")
+    p = stub(:move_in_direction)
+    w = stub(:player => p)
+    p.expects(:current_room).at_least_once.returns mock(:description => "New room")
+
+    capture_stdout {
+      c.execute(w)
+    }.should =~ /New room/
+  end
+
 end

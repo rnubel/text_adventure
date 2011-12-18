@@ -57,5 +57,8 @@ class Command::Move
 
   def execute(world)
     world.player.move_in_direction(@target)
+
+    # Execute the Look command automatically.
+    Command::Look.new.execute(world)
   end
 end
