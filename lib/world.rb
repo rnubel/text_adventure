@@ -17,4 +17,15 @@ class World
   def find_actor_in_room(name, room)
     room.find_actor(name)
   end
+
+  def do_killing(killer, victim)
+    event = Event::Killing.new(
+              :originator => killer,
+              :target => victim
+            )
+
+    victim.current_room.occupants.each do |bystander|
+      bystander.witness(event)
+    end
+  end
 end

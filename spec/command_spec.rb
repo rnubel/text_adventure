@@ -88,3 +88,13 @@ describe Command::Move do
   end
 
 end
+
+
+describe Command::Kill do
+  it "should record the player killing the target" do
+    w = mock(:do_killing => nil, :find_actor_in_room => mock(), :player => mock())
+
+    Command::Kill.new("Bob").execute(w)
+  end
+
+end

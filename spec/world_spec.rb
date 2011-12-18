@@ -33,4 +33,24 @@ describe World do
     w.find_actor_in_room("Bob", r).should == a
   end
 
+  it "should perform a killing by creating an event and causing actors in the same room to witness it" do
+    w = World.new
+
+    r = mock('room', {})
+    a1 = mock('killer', {})
+    a2 = mock('victim', { :current_room => r})
+    a3 = mock('bystander', {})
+
+    r.expects(:occupants).returns([a1, a2, a3])
+
+    expected_event = Event::Killing.new(:originator => a1, :target => a2)
+
+    a1.expects(:witness).with(equals(expected_event))
+    a2.expects(:witness).with(equals(expected_event))
+    a3.expects(:witness).with(equals(expected_event))
+
+
+
+    w.do_killing(a1, a2)
+  end
 end

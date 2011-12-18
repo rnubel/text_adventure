@@ -11,5 +11,10 @@ module Event
       @originator  = args[:originator]
       @target      = args[:target]
     end
+
+    def ==(other)
+      self.originator == other.originator &&
+      self.target == other.target
+    end
   end
 end

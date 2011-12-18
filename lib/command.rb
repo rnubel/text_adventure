@@ -34,6 +34,10 @@ end
 
 class Command::Kill
   include Command::Base
+
+  def execute(world)
+    world.do_killing(world.player, world.find_actor_in_room(@target))
+  end
 end
 
 class Command::Unknown
