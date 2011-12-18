@@ -24,6 +24,10 @@ class Actor
     end
   end
 
+  def witness(event)
+
+  end
+
   private
   def get_entity_for(actor)
     @actor_entities[actor] ||= Reactive::Entity.new(:name => actor.name)

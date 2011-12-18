@@ -50,6 +50,13 @@ describe Actor do
     a.move_in_direction("north")
   end
 
+  it "should witness events" do
+    a = Actor.new("Bill")
+
+    event = mock()
+
+    a.witness(event)
+  end
 
   describe "helper methods" do
     it "should look up the Reactive::Entity associated with any given Actor" do
