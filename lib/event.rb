@@ -3,7 +3,7 @@ module Event
 
   end
 
-  class Murder
+  class Killing
     include Base
 
     attr_accessor :originator, :target
