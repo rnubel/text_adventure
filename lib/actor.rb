@@ -28,6 +28,8 @@ class Actor
     # Convert the game event to a reactive action.
     action = get_action_for(event)
     reactive_self.react_to!(action)
+
+    puts "#{self.name} says \"Wtf?\""
   end
 
   private

@@ -36,7 +36,7 @@ class Command::Kill
   include Command::Base
 
   def execute(world)
-    world.do_killing(world.player, world.find_actor_in_room(@target))
+    world.do_killing(world.player, world.find_actor_in_room(@target, world.player.current_room))
   end
 end
 

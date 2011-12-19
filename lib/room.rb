@@ -33,6 +33,7 @@ class Room
 
   def add_actor(actor)
     occupants.push(actor)
+    actor.current_room = self
   end
 
   def remove_actor(actor)
